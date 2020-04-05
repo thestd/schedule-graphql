@@ -19,7 +19,6 @@ async function fetchSchedule(group, teacher, date_from, date_to) {
     return await pnuApiCall(`${apiUrl}/schedule?${queryParams}`);
 }
 
-
 async function fetchGroups(query) {
     let queryParams = buildQueryParams({
         query: query
@@ -27,8 +26,17 @@ async function fetchGroups(query) {
     return await pnuApiCall(`${apiUrl}/groups?${queryParams}`);
 }
 
+async function fetchTeachers(query, faculty) {
+    let queryParams = buildQueryParams({
+        query: query,
+        faculty: faculty
+    });
+    return await pnuApiCall(`${apiUrl}/teachers?${queryParams}`);
+}
+
 
 module.exports = {
     fetchSchedule,
     fetchGroups,
+    fetchTeachers,
 }
