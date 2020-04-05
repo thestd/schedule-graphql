@@ -34,8 +34,13 @@ async function fetchTeachers(query, faculty) {
     return await pnuApiCall(`${apiUrl}/teachers?${queryParams}`);
 }
 
-async function fetchFaculties() {
-    return await pnuApiCall(`${apiUrl}/faculties`);
+async function fetchFaculties(query, code) {
+    let faculties = await pnuApiCall(`${apiUrl}/faculties`);
+    let filterPredicate = (x, y, test) => x && y ? test(y) : true;
+    return faculties.filter(x =>
+        filterPredicate(query, x.name, x => x.toLowerCase().includes(query.toLowerCase())) &&
+        filterPredicate(code, x.code, x => x === code)
+    );
 }
 
 

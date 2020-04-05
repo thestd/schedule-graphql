@@ -14,9 +14,9 @@ const resolvers = {
             console.log("teachers | args => : ", args);
             return fetchTeachers(args.query, args.faculty)
         },
-        faculties: () => {
-            console.log("faculties");
-            return fetchFaculties()
+        faculties: (obj, args) => {
+            console.log("faculties | args => : ", args);
+            return fetchFaculties(args.query, args.code)
         },
     },
 };

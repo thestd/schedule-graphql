@@ -27,7 +27,7 @@ const typeDefs = gql`
     scheduleResource(group: String, teacher: String, date_from: String, date_to: String): ScheduleResource!
     groups(query: String): [String]
     teachers(query: String, faculty: Int): [String]
-    faculties: [Faculty]
+    faculties(query: String, code: Int): [Faculty]
   }
 `;
 
