@@ -1,27 +1,34 @@
 const fetch = require('node-fetch');
+const { buildQueryParams } = require('./utils')
 
 const baseUrl = 'https://pnu-api.herokuapp.com'
+const apiUrl = `${baseUrl}/api`
 
-async function pnuApiCall(path) {
-    let url = `${baseUrl}/api/${path}`;
+async function pnuApiCall(url) {
     let options = { headers: { "Content-Type": "application/json" } };
     return await fetch(encodeURI(url), options).then(res => res.json());
 }
 
 async function fetchSchedule(group, teacher, date_from, date_to) {
-    let params = {
+    let queryParams = buildQueryParams({
         group: group,
         teacher: teacher,
         date_from: date_from,
         date_to: date_to,
-    }
-    let queryParams = Object.keys(params)
-        .filter(key => params[key] !== undefined)
-        .map(key => key + '=' + params[key])
-        .join('&');
-    return await pnuApiCall(`schedule?${queryParams}`);
+    });
+    return await pnuApiCall(`${apiUrl}/schedule?${queryParams}`);
 }
+
+
+async function fetchGroups(query) {
+    let queryParams = buildQueryParams({
+        query: query
+    });
+    return await pnuApiCall(`${apiUrl}/groups?${queryParams}`);
+}
+
 
 module.exports = {
     fetchSchedule,
+    fetchGroups,
 }

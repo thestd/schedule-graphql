@@ -1,12 +1,4 @@
-const { fetchSchedule } = require('../../api/pnu-api')
-
-const groups = [
-    "ІПЗ-11",
-    "ІПЗ-1м",
-    "ІПЗ-21",
-    "ІПЗ-31",
-    "ІПЗ-41"
-]
+const { fetchSchedule, fetchGroups } = require('../../api/pnu-api')
 
 const teachers = [
     "Волчовська-Козак Олександра Євгенівна",
@@ -101,7 +93,7 @@ const resolvers = {
         },
         groups: (obj, args) => {
             console.log("scheduleResource | args => : " + args);
-            return groups
+            return fetchGroups(args.query)
         },
         teachers: (obj, args) => {
             console.log("scheduleResource | args => : " + args);
@@ -114,4 +106,4 @@ const resolvers = {
     },
 };
 
-exports.resolvers = resolvers
+module.exports.resolvers = resolvers
