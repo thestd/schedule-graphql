@@ -34,9 +34,14 @@ async function fetchTeachers(query, faculty) {
     return await pnuApiCall(`${apiUrl}/teachers?${queryParams}`);
 }
 
+async function fetchFaculties() {
+    return await pnuApiCall(`${apiUrl}/faculties`);
+}
+
 
 module.exports = {
     fetchSchedule,
     fetchGroups,
     fetchTeachers,
+    fetchFaculties,
 }
