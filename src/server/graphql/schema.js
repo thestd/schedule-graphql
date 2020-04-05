@@ -1,6 +1,11 @@
 const { gql } = require('apollo-server');
 
 const typeDefs = gql`
+  type Faculty {
+    name: String
+    code: Int
+  }
+  
   type ScheduleItem {
     number: String
     time_bounds: String
@@ -12,19 +17,20 @@ const typeDefs = gql`
     day: String
     items: [ScheduleItem]
   }
-  
-  type ScheduleResource {
-    group: String
+
+  type GroupSchedule {
+    group: String 
     schedule: [Schedule]
   }
   
-  type Faculty {
-    name: String
-    code: Int
+  type TeacherSchedule {
+    teacher: String 
+    schedule: [Schedule]
   }
 
   type Query {
-    scheduleResource(group: String, teacher: String, date_from: String, date_to: String): ScheduleResource!
+    groupSchedule(group: String!, date_from: String, date_to: String): GroupSchedule!
+    teacherSchedule(teacher: String!, date_from: String, date_to: String): TeacherSchedule!
     groups(query: String): [String]
     teachers(query: String, faculty: Int): [String]
     faculties(query: String, code: Int): [Faculty]
