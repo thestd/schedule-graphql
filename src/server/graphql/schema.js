@@ -8,7 +8,7 @@ const typeDefs = gql`
   
   type ScheduleItem {
     number: String
-    time_bounds: String
+    timeBounds: String
     info: String
   }
 
@@ -29,8 +29,8 @@ const typeDefs = gql`
   }
 
   type Query {
-    groupSchedule(group: String!, date_from: String, date_to: String): GroupSchedule!
-    teacherSchedule(teacher: String!, date_from: String, date_to: String): TeacherSchedule!
+    groupSchedule(group: String!, dateFrom: String, dateTo: String): GroupSchedule!
+    teacherSchedule(teacher: String!, dateFrom: String, dateTo: String): TeacherSchedule!
     groups(query: String): [String]
     teachers(query: String, faculty: Int): [String]
     faculties(query: String, code: Int): [Faculty]

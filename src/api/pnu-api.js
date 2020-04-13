@@ -9,20 +9,20 @@ async function pnuApiCall(url) {
     return await fetch(encodeURI(url), options).then(res => res.json());
 }
 
-async function fetchGroupSchedule(group, date_from, date_to) {
+async function fetchGroupSchedule(group, dateFrom, dateTo) {
     let queryParams = buildQueryParams({
         group: group,
-        date_from: date_from,
-        date_to: date_to,
+        date_from: dateFrom,
+        date_to: dateTo,
     });
     return await pnuApiCall(`${apiUrl}/schedule?${queryParams}`);
 }
 
-async function fetchTeacherSchedule(teacher, date_from, date_to) {
+async function fetchTeacherSchedule(teacher, dateFrom, dateTo) {
     let queryParams = buildQueryParams({
         teacher: teacher,
-        date_from: date_from,
-        date_to: date_to,
+        date_from: dateFrom,
+        date_to: dateTo,
     });
     return await pnuApiCall(`${apiUrl}/schedule?${queryParams}`);
 }
