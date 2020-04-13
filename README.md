@@ -13,30 +13,26 @@ To make an API call you're able to use either of them:
 ## Query Examples
 ```groovy
 {
-  teacherSchedule(teacher: "Козленко Микола Іванович", date_to: "09.04.2020") {
+  teacherSchedule(teacher: "Козленко Микола Іванович", dateTo: "20.04.2020") {
     teacher
     schedule {
-      date
       day
       items {
         number
-        time_bounds
-        info
+        timeBounds
       }
     }
   }
   
-  groupSchedule(group: "ІПЗ-41", date_to: "09.04.2020") {
+  groupSchedule(group: "ІПЗ-41", dateTo: "20.04.2020") {
     group
     schedule {
       date
       items {
-        number
+        info
       }
     }
   }
-  
-  groups(query: "ІПЗ")
   
   teachers(query: "Козич")
   
