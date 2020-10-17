@@ -3,7 +3,7 @@
 A [GraphQL](https://graphql.org/) microservice that interacts with [schedule-API](https://github.com/thestd/schedule-API).
 
 ## GraphQL Playground 
-You can check schema, docs or test some requests [here](https://schedule-graphql.herokuapp.com/)
+You can check schema, docs or test some requests [here](https://pnu-schedule-graphql.herokuapp.com/)
 
 ## Endpoints
 To make an API call you're able to use either of them:
